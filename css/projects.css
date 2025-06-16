@@ -33,7 +33,7 @@
 /* Link styling */
 .project h2 a {
   color: var(--color-secondary);
-  text-decoration: none;
+  text-decoration: underline;
   transition: color 0.2s ease;
 }
 
