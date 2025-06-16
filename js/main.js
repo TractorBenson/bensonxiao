@@ -8,9 +8,9 @@ const app = document.getElementById("app");
 
 /* Map each view ID to its corresponding standalone HTML file */
 const viewFiles = {
-  about: "../html/about.html",
-  projects: "../html/projects.html",
-  contact: "../html/contacts.html",
+  about: "./html/about.html",
+  projects: "./html/projects.html",
+  contact: "./html/contacts.html",
 };
 
 /* Simple in‑memory cache for fetched markup */
