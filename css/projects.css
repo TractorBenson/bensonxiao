@@ -1,0 +1,74 @@
+/* projects.css — styling for the Projects view */
+
+/* Container title */
+#projects > h1 {
+  background: var(--color-secondary);
+  color: var(--color-tertiary);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+/* ------------------------------------------------------ */
+/* Project card layout                                    */
+/* ------------------------------------------------------ */
+
+.project {
+  background: var(--color-tertiary);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Project title as a link */
+.project h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+/* Link styling */
+.project h2 a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project h2 a:hover,
+.project h2 a:focus {
+  text-decoration: underline;
+  color: var(--color-secondary-darker); /* slightly darker shade */
+}
+
+/* Project meta (time) */
+.project__meta {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.875rem;
+  color: #555;
+}
+
+/* Bullet list */
+.project__desc {
+  margin: 0;
+  padding-left: 1.25rem;
+  line-height: 1.45;
+}
+
+.project__desc li + li {
+  margin-top: 0.4rem;
+}
+
+/* Links inside bullet‑point descriptions */
+.project__desc a {
+  color: var(--color-secondary);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.project__desc a:hover,
+.project__desc a:focus {
+  color: var(--color-secondary-darker);
+}
