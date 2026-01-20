@@ -1,60 +1,41 @@
-# ============================================================
-# Multi-stage Dockerfile template for static frontends (SPA)
-# Build with Node → serve via NGINX
-#
-# Usage:
-#   docker build -t ghcr.io/<org>/<repo>:<tag> \
-#     --build-arg VITE_BASE=/ \
-#     .
-#
-# Make sure you also have a proper .dockerignore (node_modules, dist, etc.)
-# ============================================================
+# Multi-stage build for Next.js static export served by NGINX
 
-########## 1) Build stage #####################################################
+########## 1) Build stage (Next.js export) ###################################
 FROM node:20-alpine AS build
 WORKDIR /app
 
-# Copy only manifest files first to enable layer caching for deps
-# [CHANGE ME] If you use pnpm/yarn, change these patterns accordingly.
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Copy manifests first for better cache use
 COPY package*.json ./
-# [OPTIONAL] For pnpm: COPY pnpm-lock.yaml ./
-# [OPTIONAL] For yarn: COPY yarn.lock ./
 
-# Faster installs + cache your npm store between builds
-# Requires BuildKit (docker buildx). If not using BuildKit, remove the --mount.
-# [CHANGE ME] Switch npm ci → pnpm i --frozen-lockfile or yarn --frozen-lockfile as needed.
-RUN --mount=type=cache,target=/root/.npm npm ci
+# Install dependencies (BuildKit cache enabled if available)
+RUN --mount=type=cache,target=/root/.npm npm ci --prefer-offline
 
-# Now copy the rest of your source
-# [CHANGE ME] Ensure your project actually outputs to /dist (or update below).
+# Copy the rest of the source
 COPY . .
 
-# [OPTIONAL] Build-time args for tools like Vite/Next/Gatsby/etc.
-# Example: --build-arg VITE_BASE=/app/
-# Access via process.env.* or import.meta.env in your toolchain.
-ARG VITE_BASE=/
-ENV VITE_BASE=${VITE_BASE}
-
-# [CHANGE ME] Replace with your actual build command
-# e.g., npm run build, pnpm build, yarn build
+# Build static export (Next.js with output: 'export') to /app/out
 RUN npm run build
 
 
-########## 2) Runtime stage (static file server) ##############################
+########## 2) Runtime stage (NGINX static) ###################################
 FROM nginx:1.27-alpine
 
-# [CHANGE ME] Provide an NGINX config that:
-#   - Serves your SPA files from /usr/share/nginx/html
-#   - Returns index.html for unknown routes (history fallback)
-#   - Exposes a simple /healthz endpoint (or adjust HEALTHCHECK below)
+# Provide nginx config (expects /healthz route). Replace if you have your own.
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy built assets from the previous stage
-# [CHANGE ME] If your build output dir isn't /dist, update this path.
-COPY --from=build /app/dist /usr/share/nginx/html
+# Copy exported static files
+COPY --from=build /app/out /usr/share/nginx/html
 
-# [OPTIONAL] Run as non-root (hardened)
-# Note: NGINX official image uses user 101:101 in some variants; verify paths/ports.
+# Optionally run as non-root:
 # USER 101:101
 
 EXPOSE 80
+
+
+
+# Notes:
+# - If you keep dynamic Next.js features, use `next start` instead of export and skip nginx.
+# - Adjust Node version if you pin elsewhere.
+# - Ensure .dockerignore excludes node_modules, .next, out, etc., to keep image lean.
