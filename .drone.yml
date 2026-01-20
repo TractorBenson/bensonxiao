@@ -46,7 +46,7 @@ steps:
       - name: repo_root
         path: /opt/repo
     environment:
-      REPO_DIR: "/opt/repo/${DRONE_REPO_NAME,,}"   # repo name lowercased
+      REPO_DIR: "/opt/repo/$bensonxiao"   # repo name lowercased
     commands:
       - apk add --no-cache git
       # Get the repo remote URL from the Drone workspace clone
