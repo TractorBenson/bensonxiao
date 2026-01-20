@@ -1,0 +1,218 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{fancybox}
+\usepackage[most]{tcolorbox}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.375in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[2]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeTwoSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+       \textit{\small #3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+% my custom command for link buttons
+\newcommand{\linkbutton}[2]{%
+  \href{#1}{%
+    \tcbox[
+      on line,
+      enhanced,
+      colback=gray!20,
+      boxrule=0pt,      
+      arc= 5pt,        
+      boxsep=0pt,
+      left=4pt,
+      right=4pt,
+      top=2.5pt,
+      bottom=2.5pt
+    ]{%
+      \footnotesize\sffamily\fontseries{m}\selectfont #2%
+    }%
+  }%
+}
+
+\hypersetup{
+  colorlinks=false,
+  pdfborder={0 0 0}
+}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{center}
+  \textbf{\Large Benson (Yanbo) Xiao}\\[4pt]
+  \small
+  Waterloo, ON $\cdot$
+  \href{mailto:bensonxiao0721@gmail.com}{bensonxiao0721@gmail.com}\\[0pt]
+  \linkbutton{https://github.com/TractorBenson}{GitHub} 
+  \linkbutton{https://linkedin.com/in/yanbo-xiao}{LinkedIn} 
+  \linkbutton{https://bensonxiao.me}{bensonxiao.me}
+\end{center}
+
+%--------SKILLS------------
+\section{Skills}
+\begin{itemize}[leftmargin=*]
+
+  \item \textbf{Languages}: C/C++, Python, JavaScript/TypeScript, HTML/CSS, Bash
+  \item \textbf{Frameworks \& Libraries}: Next.js, Tailwind CSS, Node.js, Flask, Chart.js, Discord.js, Octokit.js
+  \item \textbf{Tools \& Platforms}: Git, Docker, Docker Compose, Drone CI, Linux, X11, Nginx, Caddy
+
+\end{itemize}
+
+
+% -----------Experience-----------------
+\section{Experience}
+\resumeSubHeadingListStart
+
+  \resumeTwoSubheading
+    {Customer Support Agent - Windscribe}{Sep -- Dec 2025}
+    {Windscribe Limited}{Remote}
+    \resumeItemListStart
+      \resumeItem{Network Troubleshooting}{Applied networking fundamentals (\textbf{networking protocols}, \textbf{DNS}) to diagnose and resolve VPN connectivity issues; configured virtual machines to reproduce and test client-side failures.}
+      \resumeItem{Automation Tooling}{Designed and implemented a \textbf{JavaScript browser extension} to automate high-frequency support operations, reducing average task completion time by \textbf{80\%}.}
+    \resumeItemListEnd
+  
+\resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------------
+\section{Projects}
+\resumeSubHeadingListStart
+
+% --- WWP ---
+\resumeSubheading
+  {WhoWillPay Expense Tracker 
+  \linkbutton{https://github.com/20age1million/who-will-pay-expense-tracker}{GitHub} 
+  % \linkbutton{https://wwp.20age1million.com/}{Demo} // Demo currently down
+  }{Feb -- Apr 2025}
+  \resumeItemListStart
+    \resumeItem{Algorithm}{Implemented weighted random payer selection (O(n)) with \textbf{Python}; reduced payer-decision clicks from 10 to \textbf{1}, turning 3-min discussions into a 2-second button press.}
+    \resumeItem{Visualization}{Integrated a \textbf{Chart.js}-based dashboard (pie chart) with responsive UI; maintained \textbf{80 ms} average API latency.}
+    \resumeItem{Backend}{Built RESTful APIs using \textbf{Flask} backed by a \textbf{SQLite} schema to manage user expenses with consistent data integrity.}
+  \resumeItemListEnd
+
+% --- GIToday ---
+\resumeSubheading
+  {GIToday Discord Bot \linkbutton{https://github.com/20age1million/GIToday}{GitHub}}{Sep -- Dec 2025}
+  \resumeItemListStart
+    \resumeItem{Bot Development}{Developed a Discord bot in \textbf{TypeScript} and \textbf{Node.js} using \textbf{Discord.js} to automatically deliver daily GitHub activity reports to organization channels.}
+    \resumeItem{Data Aggregation}{Collected and processed commit activity from the \textbf{GitHub} API using \textbf{Octokit.js} to rank contributors within a GitHub organization over a rolling 24-hour window.}
+    \resumeItem{API Orchestration}{Orchestrated multiple \textbf{third-party APIs} (GitHub, Discord, OpenAI) to generate and publish structured, readable summaries without manual intervention.}
+  \resumeItemListEnd
+
+% --- CI/CD Automation Platform ---
+\resumeSubheading
+  {CI/CD Automation with Drone \& Docker}{Sep -- Oct 2025}
+  \resumeItemListStart
+    \resumeItem{CI Workflow}{Configured and used \textbf{Drone} CI pipelines integrated with \textbf{Git} repositories to trigger automated builds on push and merge events.}  
+    \resumeItem{Containerization}{Used \textbf{Docker} and \textbf{Docker Compose} to build and run containerized services, ensuring consistent environments across development and deployment.}
+    \resumeItem{Infrastructure Management}{Managed containerized services and deployment configurations through \textbf{1Panel}, including service control and environment management.}
+  \resumeItemListEnd
+
+% --- CS246 Chess ---
+\resumeSubheading
+  {C++ Chess \linkbutton{https://github.com/TractorBenson/Chess}{GitHub}}{Jul -- Aug 2025}
+  \resumeItemListStart
+    \resumeItem{Systems \& Graphics}{Built a chess game in \textbf{C++20} using low-level \textbf{X11} graphics, implementing a custom rendering loop without external game engines.}
+    \resumeItem{Architecture \& Events}{Developed modular game logic and an event-driven input pipeline, separating game state, move execution, and rendering for maintainable gameplay flow.}
+  \resumeItemListEnd
+
+% --- GreenGroup ---
+\resumeSubheading
+  {GreenGroup Web Page \linkbutton{https://greengroup.20age1million.com/}{GitHub} \linkbutton{https://greengroup.20age1million.com/}{Demo}}{Dec 2025}
+  \resumeItemListStart
+    \resumeItem{Frontend UI}{Built a style-focused web page using \textbf{Next.js} with its file-based routing system, implementing responsive layouts and page navigation.}
+    \resumeItem{Styling}{Designed and refined the UI using \textbf{Tailwind CSS}, emphasizing visual consistency, spacing, and reusable utility-based styles.}
+  \resumeItemListEnd
+
+
+
+\resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------------
+\section{Education}
+\begin{itemize}[leftmargin=*]
+
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{University of Waterloo} & Waterloo, ON \\
+      Honours Bachelor of Computer Science & Sep 2024 – Apr 2029 (expected) \\
+    \end{tabular*}
+
+\end{itemize}
+
+ 
+% %--------RELEVANT COURSES------------
+% \section{Relevant Courses}
+%   \resumeSubHeadingListStart
+%     \resumeTwoSubheading{CS 246}{Spring 2025}{Object-Oriented Software Development}{}
+%     \resumeTwoSubheading{CS 146}{Winter 2025}{Elementary Algorithm Design and Data Abstraction (Advanced Level)}{}
+%     \resumeTwoSubheading{CS 145}{Fall 2024}{Designing Functional Programs (Advanced Level)}{}
+    
+%   \resumeSubHeadingListEnd
+
+% %-------------------------------------------
+\end{document}
