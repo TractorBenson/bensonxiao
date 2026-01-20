@@ -14,8 +14,8 @@ const bodyFont = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Personal Website",
-  description: "Personal one-page site",
+  title: "Benson Xiao",
+  description: "Benson Xiao's personal website.",
 };
 
 export default function RootLayout({
